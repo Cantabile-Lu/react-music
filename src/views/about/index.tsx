@@ -21,13 +21,16 @@ class About extends Component<Props, State,ReturnProps> {
   //     message:  'Hello'
   //   }
   // }
-  getSnapshotBeforeUpdate() {
-    return {
-      name: '李四',
-      age: 12,
-      friend: '王五'
-    }
-  }
+  /**
+   * @description 第三个泛型参数
+   */
+  // getSnapshotBeforeUpdate() {
+  //   return {
+  //     name: '李四',
+  //     age: 12,
+  //     friend: '王五'
+  //   }
+  // }
 
   render(): ReactNode {
     return (

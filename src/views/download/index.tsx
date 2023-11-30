@@ -1,6 +1,8 @@
-import { memo } from "react";
+import { memo, useEffect } from "react";
 
 import type { FC, ReactNode } from "react";
+import { useAppDispatch } from "@/store";
+import { fetchBannerDataAction } from "@/store/modules/dashboardStore/recommendStore.ts";
 
 interface Props {
   name: string;
@@ -10,6 +12,10 @@ interface Props {
 }
 
 const Index: FC<Props> = (props) => {
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(fetchBannerDataAction());
+  }, []);
   return (
     <div>
       {props.name}

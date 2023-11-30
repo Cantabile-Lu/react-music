@@ -22,12 +22,16 @@ const Station = lazy(() => import("@/views/dashboard/children-views/station"));
 const routes: RouteObject[] = [
   {
     path: "/",
-    element: <Navigate to="/dashboard/recommend" />
+    element: <Navigate to="/dashboard" />
   },
   {
     path: "/dashboard",
     element: <Dashboard />,
     children: [
+      {
+        path: "/dashboard",
+        element: <Navigate to="/dashboard/recommend" />
+      },
       {
         path: "/dashboard/recommend",
         element: <Recommend />

@@ -1,8 +1,6 @@
 import Request from "./Axios.ts";
 
-const { VITE_BASE_URL } = import.meta.env
 const server = new Request({
-  baseURL: VITE_BASE_URL,
   timeout: 10 * 1000,
   transform: {
     // instance  interceptor

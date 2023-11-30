@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import counter from "@/store/modules/counter.ts";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
 import type { TypedUseSelectorHook } from "react-redux";
+import recommendStore from "@/store/modules/dashboardStore/recommendStore.ts";
 
 const store = configureStore({
   reducer: {
-    counter
+    recommend: recommendStore
   }
 });
 // 重写Selector

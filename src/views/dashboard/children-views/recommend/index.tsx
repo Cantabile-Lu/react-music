@@ -1,20 +1,21 @@
-import { memo,useEffect } from "react";
+import { memo } from "react";
 import type { FC, ReactNode } from "react";
-import {server} from "@/utils";
+import { fetchBannerDataAction } from "@/store/modules/dashboardStore/recommendStore.ts";
+import { useAppDispatch } from "@/store";
+import Banner from "@/components/Banner";
 
 interface Props {
   children?: ReactNode;
 }
 
 const Recommend: FC<Props> = () => {
-  useEffect(() => {
-    server.get({
-      url: '/top/mv'
-    }).then(res => {
-      console.log(`🚀🚀🚀🚀🚀-> in index.tsx on 14`,res)
-    })
-  }, []);
-  return <div>Reaimmend</div>;
+  const dispatch = useAppDispatch();
+  dispatch(fetchBannerDataAction());
+  return (
+    <div>
+      <Banner />
+    </div>
+  );
 };
 Recommend.defaultProps = {};
 export default memo(Recommend);

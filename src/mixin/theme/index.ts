@@ -1,10 +1,12 @@
 
 const theme = {
   color: {
-    primary: '#C20C0C',
+    primary: '#242424',
+    success: 'blue',
+    titleColor: '#fff'
   },
   size: {
-
+    fontsize: '16px',
   },
   content: {
 

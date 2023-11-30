@@ -1,11 +1,5 @@
-import axios, {
-  AxiosInstance,
-  AxiosResponse,
-  InternalAxiosRequestConfig
-} from "axios";
+import axios, { AxiosInstance, InternalAxiosRequestConfig } from "axios";
 import type { AxiosOptions } from "./type.ts";
-
-import { Result } from "#/axios";
 
 export default class Request {
   private axiosInstance: AxiosInstance;
@@ -70,10 +64,10 @@ export default class Request {
   /**
    * @description 单个实列请求
    */
-  request<T = any>(config: AxiosOptions): Promise<Result<T>> {
+  request<T = any>(config: AxiosOptions): Promise<T> {
     return new Promise((resolve, reject) => {
       this.axiosInstance
-        .request<any, AxiosResponse<Result>>(config)
+        .request(config)
         .then((res) => {
           const { transform } = config;
           if (transform && transform.responseInterceptor) {
@@ -86,16 +80,16 @@ export default class Request {
         });
     });
   }
-  get<T>(config: AxiosOptions): Promise<Result<T>> {
+  get<T>(config: AxiosOptions): Promise<T> {
     return this.request({ ...config, method: "get" });
   }
-  post<T>(config: AxiosOptions): Promise<Result<T>> {
+  post<T>(config: AxiosOptions): Promise<T> {
     return this.request({ ...config, method: "post" });
   }
-  put<T>(config: AxiosOptions): Promise<Result<T>> {
+  put<T>(config: AxiosOptions): Promise<T> {
     return this.request({ ...config, method: "put" });
   }
-  delete<T>(config: AxiosOptions): Promise<Result<T>> {
+  delete<T>(config: AxiosOptions): Promise<T> {
     return this.request({ ...config, method: "delete" });
   }
 }

@@ -7,7 +7,6 @@ export const SubHeaderWrap = styled.div`
   .sub-header-container {
     padding-left: 180px;
     display: flex;
-    border: 1px solid blue;
     position: relative;
     top: -4px;
     &-header {

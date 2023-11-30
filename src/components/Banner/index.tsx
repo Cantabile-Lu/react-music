@@ -15,6 +15,11 @@ interface Props {
 }
 
 const Banner: FC<Props> = () => {
+  /**
+   * todo: https://lokeshdhakar.com/projects/color-thief/#getting-started
+   * 可以通过colorThief动态生成背景颜色
+   * 背景增加渐变动画
+   */
   const carouselRef = useRef<ElementRef<typeof Carousel>>(null);
   const [bannerIndex, setBannerIndex] = useState(0);
   const { banners } = useAppSelector(

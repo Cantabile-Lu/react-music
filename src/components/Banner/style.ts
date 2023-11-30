@@ -21,22 +21,6 @@ export const BannerContainerLeft = styled.div`
       height: 100%;
     }
   }
-  .dots {
-    display: flex;
-    position: absolute;
-    left: 50%;
-    bottom: 4px;
-    transform: translate(-50%, 0);
-    > li {
-      width: 20px;
-      height: 20px;
-      margin: 0 2px;
-      cursor: pointer;
-    }
-    > .liActive {
-      background-position: -95px -344px;
-    }
-  }
 `;
 export const BannerContent = styled.div`
   position: absolute;

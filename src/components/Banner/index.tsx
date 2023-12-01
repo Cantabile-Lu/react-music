@@ -58,6 +58,7 @@ const Banner: FC<Props> = () => {
             autoplaySpeed={3000}
             afterChange={afterChange}
             fade
+            easing={""}
             ref={carouselRef}
           >
             {banners.map((banner) => (

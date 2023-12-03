@@ -1,9 +1,13 @@
-import { memo } from "react";
+import { memo, useEffect } from "react";
 import type { FC, ReactNode } from "react";
-import { fetchBannerDataAction } from "@/store/modules/dashboardStore/recommendStore.ts";
+import {
+  fetchBannerDataAction,
+  fetchPersonalizedAction
+} from "@/store/modules/dashboardStore/recommendStore.ts";
 import { useAppDispatch } from "@/store";
 import Banner from "@/components/Banner";
 import { RecommedWrap } from "@/views/dashboard/children-views/recommend/style.ts";
+import Hot from "@/views/dashboard/children-views/recommend/Hot";
 
 interface Props {
   children?: ReactNode;
@@ -11,12 +15,19 @@ interface Props {
 
 const Recommend: FC<Props> = () => {
   const dispatch = useAppDispatch();
-  dispatch(fetchBannerDataAction());
+  useEffect(() => {
+    // 轮播图
+    dispatch(fetchBannerDataAction());
+    //  个性化推荐
+    dispatch(fetchPersonalizedAction());
+  }, []);
   return (
     <RecommedWrap>
       <Banner />
       <div className="content wrap-width-2">
-        <div className="content-left">1</div>
+        <div className="content-left">
+          <Hot />1
+        </div>
         <div className="content-right">2</div>
       </div>
     </RecommedWrap>

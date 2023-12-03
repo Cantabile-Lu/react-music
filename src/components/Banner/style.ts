@@ -28,6 +28,7 @@ export const BannerContent = styled.div`
   right: 0;
   top: 50%;
   transform: translateY(-50%);
+  height: 63px;
   .btn {
     position: absolute;
     width: 37px;

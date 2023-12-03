@@ -1,41 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getBannersApi } from "@/api/dashboardApi/recommendApi.ts";
+import {
+  getBannersApi,
+  getPersonalizedApi
+} from "@/api/dashboardApi/recommendApi.ts";
+import { Banners, Personalized } from "@/api/dashboardApi/type.ts";
 
-interface Banners {
-  imageUrl: string;
-  targetId: number;
-  adid: any;
-  targetType: number;
-  titleColor: string;
-  typeTitle: string;
-  url?: string;
-  exclusive: boolean;
-  monitorImpress: any;
-  monitorClick: any;
-  monitorType: any;
-  monitorImpressList: any;
-  monitorClickList: any;
-  monitorBlackList: any;
-  extMonitor: any;
-  extMonitorInfo: any;
-  adSource: any;
-  adLocation: any;
-  adDispatchJson: any;
-  encodeId: string;
-  program: any;
-  event: any;
-  video: any;
-  song: any;
-  scm: string;
-  bannerBizType: string;
-}
 interface InitialStateType {
   banners: Banners[];
-}
-
-interface Result {
-  code: number;
-  banners: Banners[];
+  personalized: Personalized[];
 }
 
 /**
@@ -45,15 +17,23 @@ export const fetchBannerDataAction = createAsyncThunk(
   "banners",
   async (_, { dispatch }) => {
     try {
-      const result = await getBannersApi<Result>();
+      const result = await getBannersApi();
       dispatch(changeBannersAction(result.banners));
-    } catch (e) {
-      console.log(`🚀🚀🚀🚀🚀-> in recommendStore.ts on 51`, e);
-    }
+    } catch (e) {}
+  }
+);
+export const fetchPersonalizedAction = createAsyncThunk(
+  "personalized",
+  async (_, { dispatch }) => {
+    try {
+      const result = await getPersonalizedApi();
+      dispatch(changePersonalizedAction(result.result));
+    } catch (e) {}
   }
 );
 const initialState: InitialStateType = {
-  banners: []
+  banners: [],
+  personalized: []
 };
 const recommendStore = createSlice({
   name: "recommend",
@@ -61,6 +41,9 @@ const recommendStore = createSlice({
   reducers: {
     changeBannersAction(state, { payload }) {
       state.banners = payload;
+    },
+    changePersonalizedAction(state, { payload }) {
+      state.personalized = payload;
     }
   }
   // extraReducers: (builder) => {
@@ -70,5 +53,6 @@ const recommendStore = createSlice({
   //   });
   // }
 });
-export const { changeBannersAction } = recommendStore.actions;
+export const { changeBannersAction, changePersonalizedAction } =
+  recommendStore.actions;
 export default recommendStore.reducer;

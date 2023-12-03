@@ -21,7 +21,7 @@ const Title: FC<Props> = (props) => {
   return (
     <TitleWrap className="sprite-2">
       <div className="wrap-left">
-        <h3 className="wrap-left-title">{title}</h3>
+        <a className="wrap-left-title">{title}</a>
         <div className="wrap-left-keywords">
           {keywords.map((item, index) => (
             <div className="keyword" key={index}>

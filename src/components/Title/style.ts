@@ -15,13 +15,15 @@ export const TitleWrap = styled.div`
       padding-left: 34px;
       a {
         font-size: 20px;
+        cursor: pointer;
       }
     }
     .wrap-left-keywords {
       display: flex;
-      margin-left: 10px;
+      margin-left: 8px;
       align-items: center;
-      color: #ccc;
+      font-size: 12px;
+      color: #666;
       .keyword {
         position: relative;
         top: 2px;
@@ -40,7 +42,8 @@ export const TitleWrap = styled.div`
   .wrap-right {
     display: flex;
     align-items: center;
-    color: #ccc;
+    color: #666;
+    font-size: 12px;
     .icon {
       width: 12px;
       height: 12px;

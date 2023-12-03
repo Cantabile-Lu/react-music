@@ -2,7 +2,7 @@ import { memo } from "react";
 import type { FC, ReactNode } from "react";
 import { HotWrap } from "@/views/dashboard/children-views/recommend/Hot/style.ts";
 import Title from "@/components/Title";
-import { useAppSelector } from "@/store";
+import { appShallowEqual, useAppSelector } from "@/store";
 import SongCard from "@/components/SongCard";
 
 interface Props {
@@ -10,9 +10,12 @@ interface Props {
 }
 
 const Hot: FC<Props> = () => {
-  const { personalized } = useAppSelector((state) => ({
-    personalized: state.recommend.personalized
-  }));
+  const { personalized } = useAppSelector(
+    (state) => ({
+      personalized: state.recommend.personalized
+    }),
+    appShallowEqual
+  );
   return (
     <HotWrap>
       <Title

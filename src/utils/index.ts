@@ -3,3 +3,5 @@
  */
 // axios
 export { server } from "./request";
+
+export { formatCount, formatImg } from "./format";

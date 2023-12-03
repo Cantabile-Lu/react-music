@@ -5,6 +5,7 @@ export const SongCardWrap = styled.div`
   margin: 15px 0;
   .wrap-top {
     position: relative;
+    width: 100%;
     &-image {
       height: 100%;
       width: 100%;

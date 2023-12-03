@@ -16,6 +16,6 @@ export function getBannersApi() {
 export function getPersonalizedApi() {
   return server.get<PersonalizedResult>({
     url: "/api/personalized",
-    params: { limit: 10 }
+    params: { limit: 8 }
   });
 }

@@ -7,7 +7,8 @@ import {
 import { useAppDispatch } from "@/store";
 import Banner from "@/components/Banner";
 import { RecommedWrap } from "@/views/dashboard/children-views/recommend/style.ts";
-import Hot from "@/views/dashboard/children-views/recommend/Hot";
+import Hot from "./Hot";
+import Disc from "./Disc";
 
 interface Props {
   children?: ReactNode;
@@ -26,7 +27,8 @@ const Recommend: FC<Props> = () => {
       <Banner />
       <div className="content wrap-width-2">
         <div className="content-left">
-          <Hot />1
+          <Hot />
+          <Disc />
         </div>
         <div className="content-right">2</div>
       </div>

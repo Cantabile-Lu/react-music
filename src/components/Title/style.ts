@@ -6,7 +6,7 @@ export const TitleWrap = styled.div`
   justify-content: space-between;
   align-items: center;
   border-bottom: 2px solid #c10d0c;
-  background-position: -225px -156px;
+  background-position: -225px -154px;
 
   .wrap-left {
     display: flex;

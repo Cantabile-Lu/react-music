@@ -1,5 +1,9 @@
 import { server } from "@/utils";
-import { BannerResult, PersonalizedResult } from "@/api/dashboardApi/type.ts";
+import {
+  AlbumResult,
+  BannerResult,
+  PersonalizedResult
+} from "@/api/dashboardApi/type.ts";
 
 /**
  * 获取轮播图
@@ -23,3 +27,10 @@ export function getPersonalizedApi() {
 /**
  * 新碟上架
  */
+
+export function getAlbumApi() {
+  return server.get<AlbumResult>({
+    url: "/api/album/newest",
+    params: { limit: 10 }
+  });
+}

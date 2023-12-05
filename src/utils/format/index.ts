@@ -17,5 +17,5 @@ export const formatImg = (
   width: number,
   height?: number
 ): string => {
-  return `${url}?param=${width}*${height ?? width}`;
+  return `${url}?param=${width}y${height ?? width}`;
 };

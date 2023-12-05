@@ -1,13 +1,15 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import {
+  getAlbumApi,
   getBannersApi,
   getPersonalizedApi
 } from "@/api/dashboardApi/recommendApi.ts";
-import { Banners, Personalized } from "@/api/dashboardApi/type.ts";
+import { Album, Banners, Personalized } from "@/api/dashboardApi/type.ts";
 
 interface InitialStateType {
   banners: Banners[];
   personalized: Personalized[];
+  albums: Album[];
 }
 
 /**
@@ -31,9 +33,16 @@ export const fetchPersonalizedAction = createAsyncThunk(
     } catch (e) {}
   }
 );
+export const fetchAlbum = createAsyncThunk("album", async (_, { dispatch }) => {
+  try {
+    const result = await getAlbumApi();
+    dispatch(changeAlbumAction(result.albums));
+  } catch (e) {}
+});
 const initialState: InitialStateType = {
   banners: [],
-  personalized: []
+  personalized: [],
+  albums: []
 };
 const recommendStore = createSlice({
   name: "recommend",
@@ -44,6 +53,9 @@ const recommendStore = createSlice({
     },
     changePersonalizedAction(state, { payload }) {
       state.personalized = payload;
+    },
+    changeAlbumAction(state, { payload }) {
+      state.albums = payload;
     }
   }
   // extraReducers: (builder) => {
@@ -53,6 +65,9 @@ const recommendStore = createSlice({
   //   });
   // }
 });
-export const { changeBannersAction, changePersonalizedAction } =
-  recommendStore.actions;
+export const {
+  changeBannersAction,
+  changePersonalizedAction,
+  changeAlbumAction
+} = recommendStore.actions;
 export default recommendStore.reducer;

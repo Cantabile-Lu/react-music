@@ -10,7 +10,7 @@ export const RecommedWrap = styled.div`
     .content-left {
       box-sizing: border-box;
       width: 729px;
-      padding: 20px 20px 40px;
+      padding: 20px;
     }
     .content-right {
       width: 250px;

@@ -5,10 +5,9 @@ export const DiscWrap = styled.div`
     height: 184px;
     background: #f5f5f5;
     border: 1px solid #d3d3d3;
-    margin: 20px 0 37px;
+    margin: 20px 0 10px;
     padding: 0 5px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     .arrow {
       width: 17px;
@@ -28,11 +27,13 @@ export const DiscWrap = styled.div`
       }
     }
     .banner {
-      width: 645px;
-      //.albumList {
-      //  display: flex;
-      //  justify-content: space-between;
-      //}
+      flex: 1;
+      overflow: hidden;
+      .album-container {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+      }
     }
   }
 `;

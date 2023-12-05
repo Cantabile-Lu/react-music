@@ -1,6 +1,7 @@
 import { memo, useEffect } from "react";
 import type { FC, ReactNode } from "react";
 import {
+  fetchAlbum,
   fetchBannerDataAction,
   fetchPersonalizedAction
 } from "@/store/modules/dashboardStore/recommendStore.ts";
@@ -21,6 +22,8 @@ const Recommend: FC<Props> = () => {
     dispatch(fetchBannerDataAction());
     //  个性化推荐
     dispatch(fetchPersonalizedAction());
+    // 新碟上架
+    dispatch(fetchAlbum());
   }, []);
   return (
     <RecommedWrap>

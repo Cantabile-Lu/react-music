@@ -4,6 +4,8 @@ import Title from "@/components/Title";
 
 import { DiscWrap } from "./style.ts";
 import { Carousel } from "antd";
+import { appShallowEqual, useAppSelector } from "@/store";
+import DiscCard from "@/components/DiscCard";
 
 interface Props {
   children?: ReactNode;
@@ -11,11 +13,18 @@ interface Props {
 
 const Disc: FC<Props> = () => {
   const bannerRef = useRef<ElementRef<typeof Carousel>>(null);
+  const { albums } = useAppSelector(
+    (state) => ({
+      albums: state.recommend.albums
+    }),
+    appShallowEqual
+  );
+  // 生成新数组
   const handler = (isRight: boolean) => {
     if (isRight) {
-      bannerRef.current?.prev();
-    } else {
       bannerRef.current?.next();
+    } else {
+      bannerRef.current?.prev();
     }
   };
   return (
@@ -27,9 +36,15 @@ const Disc: FC<Props> = () => {
           onClick={() => handler(false)}
         ></div>
         <div className="banner">
-          <Carousel ref={bannerRef}>
-            {[1, 2].map((item) => (
-              <span>{item}</span>
+          <Carousel ref={bannerRef} dots={false} speed={1500} infinite>
+            {[0, 1].map((index) => (
+              <div key={index}>
+                <div className="album-container">
+                  {albums.slice(index * 5, (index + 1) * 5).map((item) => (
+                    <DiscCard key={item.id} album={item}></DiscCard>
+                  ))}
+                </div>
+              </div>
             ))}
           </Carousel>
         </div>

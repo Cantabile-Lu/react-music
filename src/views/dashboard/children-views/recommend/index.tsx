@@ -3,13 +3,15 @@ import type { FC, ReactNode } from "react";
 import {
   fetchAlbum,
   fetchBannerDataAction,
-  fetchPersonalizedAction
+  fetchPersonalizedAction,
+  fetchPlayList
 } from "@/store/modules/dashboardStore/recommendStore.ts";
 import { useAppDispatch } from "@/store";
 import Banner from "@/components/Banner";
 import { RecommedWrap } from "@/views/dashboard/children-views/recommend/style.ts";
 import Hot from "./Hot";
 import Disc from "./Disc";
+import Ranking from "./Ranking";
 
 interface Props {
   children?: ReactNode;
@@ -24,6 +26,8 @@ const Recommend: FC<Props> = () => {
     dispatch(fetchPersonalizedAction());
     // 新碟上架
     dispatch(fetchAlbum());
+    // 榜单
+    dispatch(fetchPlayList());
   }, []);
   return (
     <RecommedWrap>
@@ -32,6 +36,7 @@ const Recommend: FC<Props> = () => {
         <div className="content-left">
           <Hot />
           <Disc />
+          <Ranking />
         </div>
         <div className="content-right">2</div>
       </div>

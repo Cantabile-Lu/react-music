@@ -2,7 +2,8 @@ import { server } from "@/utils";
 import {
   AlbumResult,
   BannerResult,
-  PersonalizedResult
+  PersonalizedResult,
+  RankingResult
 } from "@/api/dashboardApi/type.ts";
 
 /**
@@ -27,10 +28,19 @@ export function getPersonalizedApi() {
 /**
  * 新碟上架
  */
-
 export function getAlbumApi() {
   return server.get<AlbumResult>({
     url: "/api/album/newest",
     params: { limit: 10 }
+  });
+}
+
+/**
+ * 榜单
+ */
+export function getPlayListApi(id: number) {
+  return server.get<RankingResult>({
+    url: "/api/playlist/detail",
+    params: { id }
   });
 }

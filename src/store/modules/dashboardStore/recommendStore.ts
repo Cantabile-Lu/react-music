@@ -2,14 +2,22 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import {
   getAlbumApi,
   getBannersApi,
-  getPersonalizedApi
+  getPersonalizedApi,
+  getPlayListApi
 } from "@/api/dashboardApi/recommendApi.ts";
-import { Album, Banners, Personalized } from "@/api/dashboardApi/type.ts";
+import {
+  Album,
+  Banners,
+  Personalized,
+  Ranking,
+  RankingResult
+} from "@/api/dashboardApi/type.ts";
 
 interface InitialStateType {
   banners: Banners[];
   personalized: Personalized[];
   albums: Album[];
+  rankings: Ranking[];
 }
 
 /**
@@ -39,10 +47,25 @@ export const fetchAlbum = createAsyncThunk("album", async (_, { dispatch }) => {
     dispatch(changeAlbumAction(result.albums));
   } catch (e) {}
 });
+
+const ids = [19723756, 3779629, 2884035];
+export const fetchPlayList = createAsyncThunk("album", (_, { dispatch }) => {
+  const promises: Promise<RankingResult>[] = [];
+  try {
+    ids.forEach((id) => {
+      promises.push(getPlayListApi(id));
+    });
+    Promise.all(promises).then((response) => {
+      const rankings = response.map((ranking) => ranking.playlist);
+      dispatch(changePlayListAction(rankings));
+    });
+  } catch (e) {}
+});
 const initialState: InitialStateType = {
   banners: [],
   personalized: [],
-  albums: []
+  albums: [],
+  rankings: []
 };
 const recommendStore = createSlice({
   name: "recommend",
@@ -56,6 +79,9 @@ const recommendStore = createSlice({
     },
     changeAlbumAction(state, { payload }) {
       state.albums = payload;
+    },
+    changePlayListAction(state, { payload }) {
+      state.rankings = payload;
     }
   }
   // extraReducers: (builder) => {
@@ -68,6 +94,7 @@ const recommendStore = createSlice({
 export const {
   changeBannersAction,
   changePersonalizedAction,
-  changeAlbumAction
+  changeAlbumAction,
+  changePlayListAction
 } = recommendStore.actions;
 export default recommendStore.reducer;

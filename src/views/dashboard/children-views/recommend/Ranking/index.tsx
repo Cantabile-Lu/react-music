@@ -3,6 +3,7 @@ import type { FC, ReactNode } from "react";
 import { RankingWrap } from "./style.ts";
 import Title from "@/components/Title";
 import { appShallowEqual, useAppSelector } from "@/store";
+import RankingItem from "@/views/dashboard/children-views/recommend/Ranking/rankingItem.tsx";
 
 interface Props {
   children?: ReactNode;
@@ -21,12 +22,7 @@ const Ranking: FC<Props> = () => {
       <Title title="榜单" moreLink="/dashboard/ranking" />
       <div className="container">
         {rankings.map((ranking) => {
-          return (
-            <div key={ranking.id}>
-              {ranking.name}
-              {ranking.createTime}
-            </div>
-          );
+          return <RankingItem key={ranking.id} ranking={ranking} />;
         })}
       </div>
     </RankingWrap>

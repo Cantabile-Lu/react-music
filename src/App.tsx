@@ -4,6 +4,7 @@ import { ConfigProvider } from "antd";
 import { Suspense } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import PlayerTools from "@/views/player/PlayerTools";
 const theme = {
   components: {
     Carousel: {
@@ -22,6 +23,8 @@ function App() {
           </Suspense>
         </ConfigProvider>
         <Footer />
+
+        <PlayerTools />
       </div>
     </>
   );

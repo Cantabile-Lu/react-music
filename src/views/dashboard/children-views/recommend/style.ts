@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import recommendBg from "@/assets/image/wrap-bg.png";
 export const RecommedWrap = styled.div`
-  > .content {
+  .content {
     display: flex;
     border: 1px solid #d3d3d3;
 

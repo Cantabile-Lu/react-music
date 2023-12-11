@@ -1,10 +1,12 @@
 import { useRoutes } from "react-router-dom";
 import routes from "@/router";
 import { ConfigProvider } from "antd";
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PlayerTools from "@/views/player/PlayerTools";
+import { useAppDispatch } from "@/store";
+import { featchSongAction } from "@/store/modules/playerStore/player.ts";
 const theme = {
   components: {
     Carousel: {
@@ -13,13 +15,17 @@ const theme = {
   }
 };
 function App() {
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(featchSongAction(346576));
+  }, []);
   return (
     <>
-      <div className={"app-main"}>
+      <div>
         <Header />
         <ConfigProvider theme={theme}>
           <Suspense fallback={<div>...loading</div>}>
-            {useRoutes(routes)}
+            <div className="app-main">{useRoutes(routes)}</div>
           </Suspense>
         </ConfigProvider>
         <Footer />

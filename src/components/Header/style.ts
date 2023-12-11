@@ -5,6 +5,7 @@ export const HeaderWarp = styled.div`
   height: 75px;
   font-size: ${(props) => props.theme.size.fontsize};
   color: ${(props) => props.theme.color.titleColor};
+
   .content {
     display: flex;
     justify-content: space-around;

@@ -4,7 +4,7 @@
   "version": "0.0.15",
   "type": "module",
   "scripts": {
-    "dev": "vite --host",
+    "dev": "vite --host --force",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx \"{src,mock}/**/*.{ts,tsx}\" --max-warnings 0",
     "lint:prettier": "prettier --write .eslintrc.cjs \"src/**/*.{ts,tsx,less}\"",
@@ -13,8 +13,9 @@
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
     "@reduxjs/toolkit": "^1.9.7",
-    "antd": "^5.11.1",
+    "antd": "^5.12.1",
     "axios": "^1.6.2",
+    "colorthief": "^2.4.0",
     "normalize.css": "^8.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -24,6 +25,7 @@
   "devDependencies": {
     "@commitlint/cli": "^18.4.3",
     "@commitlint/config-conventional": "^18.4.3",
+    "@types/color-thief-node": "^1.0.4",
     "@types/node": "^20.9.0",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
@@ -40,6 +42,7 @@
     "less": "^4.2.0",
     "prettier": "^3.1.0",
     "styled-components": "^6.1.1",
+    "ts-node": "^10.9.2",
     "typescript": "^5.0.2",
     "vite": "^4.4.5"
   }

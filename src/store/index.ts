@@ -1,11 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
 import type { TypedUseSelectorHook } from "react-redux";
-import recommendStore from "@/store/modules/dashboardStore/recommendStore.ts";
-
+import recommendStore from "./modules/dashboardStore/recommendStore.ts";
+import playerStore from "./modules/playerStore/player.ts";
 const store = configureStore({
   reducer: {
-    recommend: recommendStore
+    recommend: recommendStore,
+    player: playerStore
   }
 });
 // 重写Selector

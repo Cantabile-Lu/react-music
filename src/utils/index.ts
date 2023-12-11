@@ -4,4 +4,4 @@
 // axios
 export { server } from "./request";
 
-export { formatCount, formatImg } from "./format";
+export { formatCount, formatImg, formatMusicUrl, formatTime } from "./format";

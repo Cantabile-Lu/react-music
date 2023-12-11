@@ -1,5 +1,6 @@
 import { memo, useRef, useState } from "react";
 import type { FC, ReactNode, ElementRef } from "react";
+// import ColorThief from "colorthief"; // 不支持vite需要编写插件
 
 import { Carousel } from "antd";
 import {

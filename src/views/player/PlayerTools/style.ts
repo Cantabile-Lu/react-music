@@ -3,15 +3,14 @@ import spriteIcon from "@/assets/image/sprite_icon.png";
 
 export const PlayerToolsWrap = styled.div`
   position: fixed;
+  z-index: 99;
   left: 0;
   right: 0;
   bottom: 0;
-  width: 100%;
-  height: 53px;
+  height: 52px;
   background-position: 0 0;
   background-repeat: repeat;
-  transition: bottom linear 100ms;
-  .player-tools-container {
+  > .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -23,10 +22,14 @@ export const PlayerToolsWrap = styled.div`
   }
 `;
 
-export const ActionWrap = styled.div`
+interface Action {
+  $isPlaying: boolean;
+}
+
+export const ActionWrap = styled.div<Action>`
   display: flex;
   align-items: center;
-  width: 108px;
+  width: 137px;
   justify-content: space-between;
   .icon {
     cursor: pointer;
@@ -45,8 +48,15 @@ export const ActionWrap = styled.div`
   .action-play {
     width: 36px;
     height: 36px;
-    background-position: 0 -205px;
-    //   props.isPlay ? "-2px -166px" : "-2px -205px"};
+    // 0 -205px
+    background-position: ${(props) =>
+      props.$isPlaying ? "-2px -166px" : "-2px -205px"};
+    &:hover {
+      background-position: ${(props) =>
+        props.$isPlaying ? "-42px -166px" : "-42px -205px"};
+    }
+
+    //   props.isPlay ? "-2px -166px" : };
     // &:hover {
     //     props.isPlay ? "-42px -166px" : "-42px -205px"};
     // }
@@ -101,7 +111,7 @@ export const ProgressWrap = styled.div`
           height: 24px;
           width: 24px;
           border: none;
-          margin-top: -7px;
+          margin-top: -5px;
           background: url(${spriteIcon}) 0 -250px;
           &::before {
             display: none;
